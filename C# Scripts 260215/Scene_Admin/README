@@ -1,0 +1,119 @@
+260215 Update.
+Scene 1 - 로그인 모달창 (Server URL, User ID(학번) 입력)
+Scene 2 - 소화전 Sound Effect, 시야 확보
+Scene 3 - 기존과 동일 (YOLO 추론, 탈출 본 Scene)
+Scene Admin - 3D 앵커 설치, json 저장, json 불러오기(앵커리스트), 앵커 삭제, 앵커 placeId 설정(인앱 가상키보드)
+
+
+
+##==== Hierarchy ====##
+
+#== Scene 1 ==#
+-PersistentRoot
+    EventSystem
+    AppStateManager
+    [BuildingBlock] MR Utility Kit
+    [BuildingBlock] Passthrough
+-[BuildingBLock] Camera Rig
+    [BuildingBlock] OVRInteractionComprehensive
+    TrackingSpace
+        LeftEyeAnchor
+        CenterEyeAnchor
+        RightEyeAnchor
+        TrackerAnchor
+        LeftHandAnchor
+            LeftControllerAnchor
+            LeftControllerInHandAnchor
+            [BuildingBlock] Hand Tracking left
+        RightHandAnchor
+            RightControllerAnchor
+            RightControllerInHandAnchor
+            [BuildingBlock] Hand Tracking Right
+        LeftHandAnchorDetached
+        RightHandAnchorDetached     
+-LoginModal
+    Image
+    LaunchController
+    Panel
+    StartGateRoot
+        InputField_Server
+            Text Area
+                Placeholder
+                Text
+        InputField_UserId
+            Text Area
+                Placeholder
+                Text
+        ErrorMessage
+        StartButton
+            Text(TMP)
+    Surface
+-Interactable 3D Object
+    [BuildingBlock] ISDK_RayInteraction
+        Collider
+        DebugVisuals
+            InteractableDebugVisual
+    ISDK_RayGrabInteraction
+    ISDK_HandGrabInteraction
+    260119BuildingModel
+    VFX
+      VFX_Fire_01_Big_Smoke
+-OVRVirtualKeyboardBuildingBlock
+
+#== Scene 2 ==#
+-[BuildingBLock] Camera Rig
+    [BuildingBlock] OVRInteractionComprehensive
+    TrackingSpace
+        LeftEyeAnchor
+        CenterEyeAnchor
+            RadialGuageCanvas
+                RadialCircle
+                RadialCircleBG
+                GaugeInstText
+        RightEyeAnchor
+        TrackerAnchor
+        LeftHandAnchor
+            LeftControllerAnchor
+            LeftControllerInHandAnchor
+            [BuildingBlock] Hand Tracking left
+        RightHandAnchor
+            RightControllerAnchor
+            RightControllerInHandAnchor
+            [BuildingBlock] Hand Tracking Right
+        LeftHandAnchorDetached
+        RightHandAnchorDetached     
+-Fire Bell Sound
+-LaunchController
+-VFX_CeilingSmoke
+-[BuildingBlock] Scene Mesh        // 추후 Scene Mesh 의존성 제거를 위해 삭제 예정.
+
+#== Scene 3 ==#
+
+생략
+
+#== Scene Admin ==#
+
+-[BuildingBLock] Camera Rig
+    [BuildingBlock] OVRInteractionComprehensive
+    TrackingSpace
+        LeftEyeAnchor
+        CenterEyeAnchor
+        RightEyeAnchor
+        TrackerAnchor
+        LeftHandAnchor
+            LeftControllerAnchor
+            LeftControllerInHandAnchor
+            [BuildingBlock] Hand Tracking left
+        RightHandAnchor
+            RightControllerAnchor
+            RightControllerInHandAnchor
+            [BuildingBlock] Hand Tracking Right
+        LeftHandAnchorDetached
+        RightHandAnchorDetached     
+-AnchorManager
+-PlaceIdInputCanvas
+    PendingInputText
+        Text Area
+            Placeholder
+            Text
+-OVRVirtualKeyboardBuildingBlock
